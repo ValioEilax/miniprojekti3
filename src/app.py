@@ -8,11 +8,11 @@ from db import db
 app = Flask(__name__)
 
 if getenv("production") == "test":
-    DB_ADDRESS = "postgresql:///test"
+    DB_ADDRESS = "postgresql://test:test@localhost:5432"
 # if getenv("production") == "test":
 #     DB_ADDRESS = "postgresql:///testi"
 else:
-    DB_ADDRESS = getenv("DATABASE_URL")
+    DB_ADDRESS = getenv("DATABASE_URL").replace("://", "ql://", 1)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = DB_ADDRESS
 
