@@ -1,4 +1,4 @@
-from flask import redirect, request, render_template, session
+from flask import redirect, request, render_template, session, send_file
 from app import app
 import reference
 from db import db
@@ -12,12 +12,15 @@ def error_message(error, req, route, link):
 
 @app.route('/')
 def index():
-    if 'message' in session:
+    if 'message' in session and 'message_type' in session:
         message = session['message']
+        message_type = session['message_type']
         del session['message']
+        del session['message_type']
     else:
         message = None
-    return render_template('index.html', message=message)
+        message_type = None
+    return render_template('index.html', message=message, message_type=message_type)
 
 
 @app.route('/reference_forms')
@@ -28,7 +31,6 @@ def reference_forms():
 @app.route("/reference_lists")
 def reference_lists():
     try:
-        # users.check_csrf_token()
         books = reference.get_books(db)
         articles = reference.get_articles(db)
         inproceedings = reference.get_inproceedings(db)
@@ -37,7 +39,6 @@ def reference_lists():
             books=books,
             articles=articles,
             inproceedings=inproceedings)
-
     except Exception as error:
         return error_message(error, request, "/", "/")
 
@@ -46,7 +47,6 @@ def reference_lists():
 def handle_book():
     try:
         if request.method == "POST":
-            # users.check_csrf()
             title = request.form["title"]
             author = request.form["author"]
             year = request.form["year"]
@@ -54,16 +54,18 @@ def handle_book():
             url = request.form["url"]
             reference.add_book(title, author, year, publisher, url, db)
             session['message'] = f"Added book {title} by {author} to database"
+            session['message_type'] = 'success'
             return redirect('/')
-    except Exception as error:
-        return error_message(error, request, "/book", "/")
+    except Exception:
+        session['message'] = "Error when adding book"
+        session['message_type'] = 'danger'
+        return redirect('/')
 
 
 @app.route("/article", methods=["post"])
 def handle_article():
     try:
         if request.method == "POST":
-            # users.check_csrf()
             title = request.form["title"]
             author = request.form["author"]
             year = request.form["year"]
@@ -71,35 +73,43 @@ def handle_article():
             url = request.form["url"]
             reference.add_article(title, author, year, journal, url, db)
             session['message'] = f"Added article {title} by {author} to database"
+            session['message_type'] = 'success'
             return redirect('/')
-    except Exception as error:
-        return error_message(error, request, "/article", "/")
+    except Exception:
+        session['message'] = "Error when adding article"
+        session['message_type'] = 'danger'
+        return redirect('/')
 
 
 @app.route("/inproceeding", methods=["post"])
 def handle_inproceeding():
     try:
         if request.method == "POST":
-            # users.check_csrf()
             title = request.form["title"]
             author = request.form["author"]
             year = request.form["year"]
             url = request.form["url"]
             reference.add_inproceeding(title, author, year, url, db)
             session['message'] = f"Added inproceeding {title} by {author} to database"
+            session['message_type'] = 'success'
             return redirect('/')
-    except Exception as error:
-        return error_message(error, request, "/inproceeding", "/")
+    except Exception:
+        session['message'] = "Error when adding inproceeding"
+        session['message_type'] = 'danger'
+        return redirect('/')
 
 
-@app.route("/bibtex", methods=["post", "get"])
-def make_bibtex():
+@app.route("/bibtex-file", methods=["get"])
+def bibtex_file():
     try:
         data = reference.get_data(db)
         reference.write_bibtex_file(data)
-        return redirect("/")
-    except Exception as error:
-        return error_message(error, request, "/bibtex", "/")
+        path = 'viitteet.bib'
+        return send_file(path, as_attachment=True)
+    except Exception:
+        session['message'] = "Error when downloading Bibtex.file"
+        session['message_type'] = 'danger'
+        return redirect('/')
 
 
 @app.route("/delete_reference", methods=["post"])
@@ -117,4 +127,5 @@ def delete_reference():
         return redirect('/')
 
     session['message'] = f"Deleted {reference_type} with id={reference_id} from database"
+    session['message_type'] = 'danger'
     return redirect('/')
