@@ -1,9 +1,9 @@
-from sqlalchemy.sql import text
+from sqlalchemy.sql import textb_url
 
 
 def add_book(title, author, year, publisher, url, db):
     sql = text(
-        '''INSERT INTO books (title, author, b_year, publisher, b_url)
+        '''INSERT INTO books (title, author, book_year, publisher, book_url)
         VALUES (:title, :author, :year, :publisher, :url)''')
     db.session.execute(sql, {
         "title": title,
@@ -17,7 +17,7 @@ def add_book(title, author, year, publisher, url, db):
 
 def get_books(db):
     sql = text(
-        '''SELECT book_id, title, author, b_year, publisher, b_url FROM books''')
+        '''SELECT book_id, title, author, book_year, publisher, book_url FROM books''')
     result = db.session.execute(sql)
     books = result.fetchall()
     return books
@@ -32,7 +32,7 @@ def delete_book(book_id, db):
 
 def add_article(title, author, year, journal, url, db):
     sql = text(
-        '''INSERT INTO articles (title, author, a_year, journal, a_url)
+        '''INSERT INTO articles (title, author, article_year, journal, article_url)
         VALUES (:title, :author, :year, :journal, :url)''')
     db.session.execute(sql, {
         "title": title,
@@ -46,7 +46,7 @@ def add_article(title, author, year, journal, url, db):
 
 def get_articles(db):
     sql = text(
-        '''SELECT article_id, title, author, a_year, journal, a_url FROM articles''')
+        '''SELECT article_id, title, author, article_year, journal, article_url FROM articles''')
     result = db.session.execute(sql)
     articles = result.fetchall()
     return articles
@@ -61,7 +61,7 @@ def delete_article(article_id, db):
 
 def add_inproceeding(title, author, year, url, db):
     sql = text(
-        '''INSERT INTO inproceedings (title, author, i_year, i_url)
+        '''INSERT INTO inproceedings (title, author, inproceedings_year, inproceedings_url)
         VALUES (:title, :author, :year, :url)''')
     db.session.execute(sql, {
         "title": title,
@@ -74,7 +74,7 @@ def add_inproceeding(title, author, year, url, db):
 
 def get_inproceedings(db):
     sql = text(
-        '''SELECT inproceeding_id, title, author, i_year, i_url FROM inproceedings''')
+        '''SELECT inproceeding_id, title, author, inproceedings_year, inproceedings_url FROM inproceedings''')
     result = db.session.execute(sql)
     inproceedings = result.fetchall()
     return inproceedings
@@ -163,9 +163,9 @@ def create_schema_book(db):
     book_id SERIAL PRIMARY KEY,
     title TEXT,
     author TEXT,
-    b_year INTEGER,
+    book_year INTEGER,
     publisher TEXT,
-    b_url TEXT
+    book_url TEXT
 ); ''')
     db.session.execute(sql)
     db.session.commit()
@@ -177,9 +177,9 @@ def create_schema_articles(db):
     article_id SERIAL PRIMARY KEY,
     title TEXT,
     author TEXT,
-    a_year INTEGER,
+    article_year INTEGER,
     journal TEXT,
-    a_url TEXT
+    article_url TEXT
 ); ''')
     db.session.execute(sql)
     db.session.commit()
@@ -191,8 +191,8 @@ def create_schema_inproceedings(db):
     inproceeding_id SERIAL PRIMARY KEY,
     title TEXT,
     author TEXT,
-    i_year INTEGER,
-    i_url TEXT
+    inproceedings_year INTEGER,
+    inproceedings_url TEXT
 ); ''')
     db.session.execute(sql)
     db.session.commit()
