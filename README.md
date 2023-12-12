@@ -5,6 +5,7 @@
 ## Description:
 
 Miniproject-exercise of group number 3 for a course "TKT20006 - Ohjelmistotuotanto" at University of Helsinki in fall 2023.
+
 Here is a link to our app:
 [Application](https://miniprojekti3.fly.dev/)
 
