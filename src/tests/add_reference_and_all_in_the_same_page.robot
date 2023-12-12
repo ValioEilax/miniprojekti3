@@ -9,6 +9,7 @@ Suite Teardown  Close Application
 
 Go To Front Page
     Go To          ${HOME_URL}
+    # References are in the same page
     Page Should Contain    Books
     Page Should Contain    Articles
     Page Should Contain    Inproceedings

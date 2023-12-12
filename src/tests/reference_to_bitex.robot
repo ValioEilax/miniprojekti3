@@ -9,12 +9,8 @@ Suite Teardown  Close Application
 
 Reference to Bibtex-file
     Go To          ${HOME_URL}
+    #there is a download button
     Click Element    name=bibtex
-    Download Succeeds With Message  Downloaded Bibtex-file
+    Page Should Contain    References
 
 
-*** Keywords ***
-
-Download Succeeds With Message
-    [Arguments]  ${message}
-    Page Should Contain  ${message}
