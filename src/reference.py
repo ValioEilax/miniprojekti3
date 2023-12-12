@@ -160,13 +160,13 @@ def delete_schema_inproceedings(db):
 def create_schema_book(db):
     sql = text(
         '''CREATE TABLE books (
-    book_id SERIAL PRIMARY KEY,
-    title TEXT,
-    author TEXT,
-    b_year INTEGER,
-    publisher TEXT,
-    b_url TEXT
-); ''')
+        book_id SERIAL PRIMARY KEY,
+        title TEXT,
+        author TEXT,
+        b_year INTEGER,
+        publisher TEXT,
+        b_url TEXT
+    ); ''')
     db.session.execute(sql)
     db.session.commit()
 
@@ -174,13 +174,13 @@ def create_schema_book(db):
 def create_schema_articles(db):
     sql = text(
         '''CREATE TABLE articles (
-    article_id SERIAL PRIMARY KEY,
-    title TEXT,
-    author TEXT,
-    a_year INTEGER,
-    journal TEXT,
-    a_url TEXT
-); ''')
+        article_id SERIAL PRIMARY KEY,
+        title TEXT,
+        author TEXT,
+        a_year INTEGER,
+        journal TEXT,
+        a_url TEXT
+    ); ''')
     db.session.execute(sql)
     db.session.commit()
 
@@ -188,12 +188,12 @@ def create_schema_articles(db):
 def create_schema_inproceedings(db):
     sql = text(
         '''CREATE TABLE inproceedings (
-    inproceeding_id SERIAL PRIMARY KEY,
-    title TEXT,
-    author TEXT,
-    i_year INTEGER,
-    i_url TEXT
-); ''')
+        inproceeding_id SERIAL PRIMARY KEY,
+        title TEXT,
+        author TEXT,
+        i_year INTEGER,
+        i_url TEXT
+    ); ''')
     db.session.execute(sql)
     db.session.commit()
     
