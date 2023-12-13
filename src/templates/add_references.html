@@ -12,133 +12,212 @@
             </select>
         </div>
 
-
-        <form action="/book" method="POST" id="bookForm" style="display:block;">
+        <form action="/book" method="POST" id="bookForm" class="validate" style="display:block;" novalidate>
             <div class="row g-3 my-2">
                 <div class="col">
                     <label for="b_title" class="form-label">Title</label>
                     <input type="text" class="form-control" id="b_title" name="title"
-                           placeholder="Title" required>
+                           placeholder="Title" pattern="(.*)([A-Za-z])(.*)" required>
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Not ok...
+                        Required and at least one alphabetic-character is needed.
+                    </div>
                 </div>
                 <div class="col">
                     <label for="b_author" class="form-label">Author</label>
+                    <a class="m-1" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="tooltip"
+                            data-bs-html="true" data-bs-title="
+                            <h6>Input formats:</h6>
+                            <p><b>One author:</b> <em>&quot;lastname, firstname&quot;</em>.<br>
+                            <b>Many authors:</b> <em>&quot;lastname1, firstname1 AND lastname2, firstname2&quot;</em>.</p>" disabled>
+                        <img src="../static/images/circle-info-solid.svg" alt="information"/>
+                    </a>
                     <input type="text" class="form-control" id="b_author" name="author"
-                           placeholder="Author" required>
+                           placeholder="Author" pattern="(.*)([A-Za-z])(.*)" required>
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Not ok...
+                        Required and at least one alphabetic-character is needed.
+                    </div>
                 </div>
                 <div class="col">
                     <label for="b_year" class="form-label">Year</label>
                     <input type="number" class="form-control" id="b_year" name="year"
                            placeholder="Year" minlength="1" maxlength="4" required>
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Not ok...
+                        Required and only numbers are allowed.
+                    </div>
                 </div>
                 <div class="col">
                     <label for="b_publisher" class="form-label">Publisher</label>
                     <input type="text" class="form-control" id="b_publisher" name="publisher"
-                           placeholder="Publisher" required>
+                           placeholder="Publisher" pattern="(.*)([A-Za-z])(.*)" required>
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Not ok...
+                        This is required. All unpublished books will be burned.
+                        Additionally, at least one alphabetic-character is needed.
+                    </div>
                 </div>
                 <div class="col">
                     <label for="b_url" class="form-label">URL</label>
                     <input type="url" class="form-control" id="b_url" name="url"
-                           placeholder="URL" required>
+                           placeholder="URL">
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Not ok...
+                        URL needs to be in recognized url-format starting with "http://" or left blank.
+                    </div>
                 </div>
             </div>
             <input class="btn btn-success my-2" type="submit" value="Add Book">
         </form>
 
-        <form action="/article" method="POST" id="articleForm" style="display:none;">
+        <form action="/article" method="POST" id="articleForm" class="validate" style="display:none;" novalidate>
             <div class="row g-3 my-2">
                 <div class="col">
                     <label for="a_title" class="form-label">Title</label>
                     <input type="text" class="form-control" id="a_title" name="title"
-                           placeholder="Title" required>
+                           placeholder="Title" pattern="(.*)([A-Za-z])(.*)" required>
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Not ok...
+                        Required and at least one alphabetic-character is needed.
+                    </div>
                 </div>
                 <div class="col">
                     <label for="a_author" class="form-label">Author</label>
+                    <a class="m-1" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="tooltip"
+                            data-bs-html="true" data-bs-title="
+                            <h6>Input formats:</h6>
+                            <p><b>One author:</b> <em>&quot;lastname, firstname&quot;</em>.<br>
+                            <b>Many authors:</b> <em>&quot;lastname1, firstname1 AND lastname2, firstname2&quot;</em>.</p>" disabled>
+                        <img src="../static/images/circle-info-solid.svg" alt="information"/>
+                    </a>
                     <input type="text" class="form-control" id="a_author" name="author"
-                           placeholder="Author" required>
+                           placeholder="Author" pattern="(.*)([A-Za-z])(.*)" required>
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Not ok...
+                        Required and at least one alphabetic-character is needed.
+                    </div>
                 </div>
                 <div class="col">
                     <label for="a_year" class="form-label">Year</label>
                     <input type="number" class="form-control" id="a_year" name="year"
                            placeholder="Year" minlength="1" maxlength="4" required>
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Not ok...
+                        Required and only numbers are allowed.
+                    </div>
                 </div>
                 <div class="col">
                     <label for="a_journal" class="form-label">Journal</label>
                     <input type="text" class="form-control" id="a_journal" name="journal"
-                           placeholder="Journal" required>
+                           placeholder="Journal" pattern="(.*)([A-Za-z])(.*)" required>
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Not ok...
+                        Required and at least one alphabetic-character is needed.
+                    </div>
                 </div>
                 <div class="col">
                     <label for="a_url" class="form-label">URL</label>
                     <input type="url" class="form-control" id="a_url" name="url"
-                           placeholder="URL" required>
+                           placeholder="URL">
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Not ok...
+                        URL needs to be in recognized url-format starting with "http://" or left blank.
+                    </div>
                 </div>
             </div>
             <input class="btn btn-success my-2" type="submit" value="Add Article">
         </form>
 
-        <form action="/inproceeding" method="POST" id="inproceedingForm" style="display:none;">
+        <form action="/inproceeding" method="POST" class="validate" id="inproceedingForm" style="display:none;" novalidate>
             <div class="row g-3 my-2">
                 <div class="col">
                     <label for="i_title" class="form-label">Title</label>
                     <input type="text" class="form-control" id="i_title" name="title"
-                           placeholder="Title" required>
+                           placeholder="Title" pattern="(.*)([A-Za-z])(.*)" required>
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Not ok...
+                        Required and at least one alphabetic-character is needed.
+                    </div>
                 </div>
                 <div class="col">
                     <label for="i_author" class="form-label">Author</label>
+                    <a class="m-1" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="tooltip"
+                            data-bs-html="true" data-bs-title="
+                            <h6>Input formats:</h6>
+                            <p><b>One author:</b> <em>&quot;lastname, firstname&quot;</em>.<br>
+                            <b>Many authors:</b> <em>&quot;lastname1, firstname1 AND lastname2, firstname2&quot;</em>.</p>" disabled>
+                        <img src="../static/images/circle-info-solid.svg" alt="information"/>
+                    </a>
                     <input type="text" class="form-control" id="i_author" name="author"
-                           placeholder="Author" required>
+                           placeholder="Author" pattern="(.*)([A-Za-z])(.*)" required>
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Not ok...
+                        Required and at least one alphabetic-character is needed.
+                    </div>
                 </div>
                 <div class="col">
                     <label for="i_year" class="form-label">Year</label>
                     <input type="number" class="form-control" id="i_year" name="year"
                            placeholder="Year" minlength="1" maxlength="4" required>
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Not ok...
+                        Required and only numbers are allowed.
+                    </div>
                 </div>
                 <div class="col">
                     <label for="i_url" class="form-label">URL</label>
                     <input type="url" class="form-control" id="i_url" name="url"
-                           placeholder="URL" required>
+                           placeholder="URL">
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Not ok...
+                        URL needs to be in recognized url-format starting with "http://" or left blank.
+                    </div>
                 </div>
             </div>
             <input class="btn btn-success my-2" type="submit" value="Add Inproceeding">
-        </form>
-
-{#        <form action="/book" method="POST" id="bookForm" style="display:none;">#}
-{#            <p>Title:<br>#}
-{#            <input type="text" name="title"required></p>#}
-{#            <p>Author:<br>#}
-{#            <input type="text" name="author"required></p>#}
-{#            <p>Year:<br>#}
-{#            <input type="number" name="year" minlength="1" maxlength="4"required></p>#}
-{#            <p>Publisher:<br>#}
-{#            <input type="text" name="publisher"required></p>#}
-{#            <p>URL:<br>#}
-{#            <input type="text" name="url"required></p>#}
-{#            <input type="submit" value="Add Book">#}
-{#        </form>#}
-
-        <form action="/article" method="POST" id="articleForm" style="display:none;">
-            <p>Title:<br>
-            <input type="text" name="title"required></p>
-            <p>Author:<br>
-            <input type="text" name="author"required></p>
-            <p>Journal:<br>
-            <input type="text" name="journal"required></p>
-            <p>Year:<br>
-            <input type="number" name="year" minlength="1" maxlength="4"required></p>
-            <p>URL:<br>
-            <input type="text" name="url"required></p>
-            <input type="submit" value="Add Article">
-        </form>
-
-        <form action="/inproceeding" method="POST" id="inproceedingForm" style="display:none;">
-            <p>Title:<br>
-            <input type="text" name="title"required></p>
-            <p>Author:<br>
-            <input type="text" name="author"required></p>
-            <p>Year:<br>
-            <input type="number" name="year" minlength="1" maxlength="4"required></p>
-            <p>URL:<br>
-            <input type="text" name="url"required></p>
-            <input type="submit" value="Add Inproceeding">
         </form>
     </div>
 
@@ -167,6 +246,30 @@
                 bookForm.style.display = "none";
             }
         }
+
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            let forms = document.querySelectorAll('.validate')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
     </script>
 
 {% endblock %}
