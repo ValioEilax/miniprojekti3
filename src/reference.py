@@ -196,4 +196,3 @@ def create_schema_inproceedings(db):
 ); ''')
     db.session.execute(sql)
     db.session.commit()
-    
