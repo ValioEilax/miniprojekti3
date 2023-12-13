@@ -100,21 +100,21 @@ def get_data(db):
 
 
 def template_books(entry):
-    result = '@book{' + entry[1].replace(" ", "") + str(
+    result = '@book{' + entry[1].replace(" ", "").replace(",", "") + str(
         entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(   #pylint: disable=line-too-long
         entry[3]) + ',\n publisher = "' + entry[4] + '",\n url = "' + entry[5] + '",\n}\n\n'
     return result
 
 
 def template_articles(entry):
-    result = '@article{' + entry[1].replace(" ", "") + str(
+    result = '@article{' + entry[1].replace(" ", "").replace(",", "") + str(
         entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(   #pylint: disable=line-too-long
         entry[3]) + ',\n journal = "' + entry[4] + '",\n url = "' + entry[5] + '",\n}\n\n'
     return result
 
 
 def template_inproceedings(entry):
-    result = '@inproceeding{' + entry[1].replace(" ", "") + str(
+    result = '@inproceeding{' + entry[1].replace(" ", "").replace(",", "") + str(
         entry[3]) + ',\n title = "' + entry[1] + '",\n author = "' + entry[2] + '",\n year = ' + str(   #pylint: disable=line-too-long
         entry[3]) + ',\n url = "' + entry[4] + '",\n}\n\n'
     return result
