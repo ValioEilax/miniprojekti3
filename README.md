@@ -61,6 +61,7 @@ Open a new terminal and get database connection:
 
 Open a new terminal and create a new database for test:
 > psql
+>
 > CREATE DATABASE test;
 > 
 > \c test
