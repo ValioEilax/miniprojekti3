@@ -120,3 +120,24 @@ class TestReference(unittest.TestCase):
             '@inproceeding{Testinproceeding3,\n title = "Test inproceeding",'+
             '\n author = "Test author",\n year = 3,'+
             '\n url = "Test url",\n}\n\n')
+
+    def test_bibtex_file(self):
+        data = reference.get_data(db)
+        reference.write_bibtex_file(data)
+
+        with open('viitteet.bib', 'r') as file:
+            contents = file.read()
+
+        for entry in data[0]:
+            bibtex_entry = reference.template_books(entry)
+            self.assertIn(bibtex_entry, contents)
+
+        for entry in data[1]:
+            bibtex_entry = reference.template_articles(entry)
+            self.assertIn(bibtex_entry, contents)
+
+        for entry in data[2]:
+            bibtex_entry = reference.template_inproceedings(entry)
+            self.assertIn(bibtex_entry, contents)
+
+        file.close()
