@@ -9,7 +9,7 @@ Miniproject-exercise of group number 3 for a course "TKT20006 - Ohjelmistotuotan
 Here is a link to our app:
 [Application](https://miniprojekti3.fly.dev/)
 
-## Setting up the project:
+## Setting up the project locally:
 
 Get the source code, clone the project.
 
@@ -22,9 +22,6 @@ Create a file named ".env" to "src"-folder with following contents
 (your_db_name and your_secret_key can be chosen freely at this point):
 >DATABASE_URL="postgresql:///your_db_name"
 >SECRET_KEY="your_secret_key"
-
-Activate virtual environment:
-> source venv/bin/activate
 
 Install project dependencies with Poetry:
 > poetry install --no-root
@@ -41,7 +38,7 @@ Go to "src"-folder:
 > cd src
 
 Run the Flask application:
->flask run
+> flask run
 
 Open the flask-webpage with your browser (Usual URL is http://127.0.0.1:5000).
 
@@ -50,6 +47,43 @@ Flask application can be stopped in terminal py pressing:
 
 Shell can be exited with a command:
 > exit
+
+## Running tests locally:
+### Unitetest:
+Start the virtual environment and shell:
+> poetry shell
+
+Go to "src"-folder:
+> cd src
+
+open a new terminal and get database connection:
+> start-pg.sh
+
+open a new terminal and create a new database for test:
+> psql
+> CREATE DATABASE test;
+> \c test
+
+Copy all the commands in schema.sql and use them.
+
+Go to app.py and comment the first if if getenv("production") == "test": out, now take the comment off from the the second if getenv("production") == "test":.
+
+Now run the tests in src-folder:
+> production=test pytest 
+
+### Acceptance criteria using Robot Framework:
+Start the virtual environment and shell:
+> poetry shell
+
+open a new terminal and get database connection:
+> start-pg.sh
+
+Run the Flask application in a new terminal:
+> flask run
+
+Run robot tests:
+> robot src/tests
+
 
 ## Documentation
 - [Työaikakirjanpito & Sprint Backlog](https://docs.google.com/spreadsheets/d/1tvDweyWHiYNj0rdVt22RT_IMBiqbW4Og1WdRkrPofMc/edit?usp=sharing)
