@@ -4,15 +4,13 @@ from flask_bootstrap import Bootstrap
 from db import db
 
 
-
 app = Flask(__name__)
 
 if getenv("production") == "test":
     DB_ADDRESS = "postgresql://test:test@localhost:5432"
     SECRET_KEY = "1234"
-# if getenv("production") == "test":
-#     DB_ADDRESS = "postgresql:///test"
-
+elif getenv("production") == "local_test":
+    DB_ADDRESS = "postgresql:///test"
 else:
     DB_ADDRESS = getenv("DATABASE_URL")
 
