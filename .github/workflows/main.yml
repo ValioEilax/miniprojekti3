@@ -64,4 +64,7 @@ jobs:
           DATABASE_URL: postgresql://test:test@localhost:5432
           FLASK_ENV: development
          
-        run: bash run_robot_tests.sh
+        run: |
+          export production=test
+          export DATABASE_URL="postgresql://test:test@localhost:5432"
+          bash run_robot_tests.sh
