@@ -36,11 +36,15 @@ jobs:
         run: |
           psql -h localhost -U test -d test -a -f src/delschema.sql
           psql -h localhost -U test -d test -a -f src/schema.sql
+
+      - name: Set Flask secret key
+        run: echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> $GITHUB_ENV
+        
       - name: Run tests with production environment variable
         run: |
           export production=test
           export DATABASE_URL="postgresql://test:test@localhost:5432"
-          export SECRET_KEY="1234567"  # Add this line
+          export app.secret_key = getenv("SECRET_KEY")  # Add this line
           poetry run coverage run --branch -m pytest
 
       - name: Coverage XML
