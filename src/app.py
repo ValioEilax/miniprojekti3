@@ -10,6 +10,8 @@ if getenv("production") == "test":
     DB_ADDRESS = "postgresql://test:test@localhost:5432"
 elif getenv("production") == "local_test":
     DB_ADDRESS = "postgresql:///test"
+elif getenv("production") == "local":
+    DB_ADDRESS = getenv("DATABASE_URL")
 else:
     DB_ADDRESS = getenv("DATABASE_URL").replace("://", "ql://", 1)
 
