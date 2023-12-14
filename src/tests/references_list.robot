@@ -8,7 +8,7 @@ Suite Teardown  Close Application
 
 Book References Are Listed Neatly And Display Key Details
     Go To  ${HOME_URL}
-    Page Contains List Of Book References
+    Page Should Contain  Books
     Page Contains Key Detail  Title
     Page Contains Key Detail  Author
     Page Contains Key Detail  Year
@@ -17,6 +17,7 @@ Book References Are Listed Neatly And Display Key Details
 
 
 Article References Are Listed Neatly And Display Key Details
+    Go To  ${HOME_URL}
     Page Should Contain  Articles
     Page Contains Key Detail  Title
     Page Contains Key Detail  Author
@@ -26,6 +27,7 @@ Article References Are Listed Neatly And Display Key Details
 
 
 Inproceeding References Are Listed Neatly And Display Key Details
+    Go To  ${HOME_URL}
     Page Should Contain  Inproceedings
     Page Contains Key Detail  Title
     Page Contains Key Detail  Author
@@ -34,10 +36,6 @@ Inproceeding References Are Listed Neatly And Display Key Details
 
 
 *** Keywords ***
-
-Page Contains List Of Book References
-    Page Should Contain  Books
-
 
 Page Contains Key Detail
     [Arguments]  ${detail}
