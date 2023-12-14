@@ -28,6 +28,14 @@ jobs:
           python-version: "3.10"
       - name: Install Poetry
         run: pip install poetry
+      - name: Setup chromedriver
+        uses: nanasess/setup-chromedriver@master
+      - name: Configure chromedriver
+        run: |
+          export DISPLAY=:99
+          chromedriver --url-base=/wd/hub &
+          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+
       - name: Install dependencies
         run: poetry install
       - name: Create table
@@ -41,6 +49,7 @@ jobs:
           export production=test
           export DATABASE_URL="postgresql://test:test@localhost:5432"
           poetry run coverage run --branch -m pytest
+          bash run_robot_tests.sh
 
       - name: Coverage XML
         run: poetry run coverage xml
@@ -51,20 +60,14 @@ jobs:
         run: |
           poetry run pylint src
 
-      - name: Setup chromedriver
-        uses: nanasess/setup-chromedriver@master
-      - name: Configure chromedriver
-        run: |
-          export DISPLAY=:99
-          chromedriver --url-base=/wd/hub &
-          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
-      - name: Run robot tests
-        env:
-          PGPASSWORD: test
-          DATABASE_URL: postgresql://test:test@localhost:5432
-          FLASK_ENV: development
+
+      # - name: Run robot tests
+      #   env:
+      #     PGPASSWORD: test
+      #     DATABASE_URL: postgresql://test:test@localhost:5432
+      #     FLASK_ENV: development
          
-        run: |
-          export production=test
-          export DATABASE_URL="postgresql://test:test@localhost:5432"
-          bash run_robot_tests.sh
+      #   run: |
+      #     export production=test
+      #     export DATABASE_URL="postgresql://test:test@localhost:5432"
+      #     bash run_robot_tests.sh
