@@ -9,3 +9,4 @@ report.html
 *.png
 htmlcov
 **/report.html
+.coverage
