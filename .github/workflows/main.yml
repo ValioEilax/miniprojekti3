@@ -44,7 +44,6 @@ jobs:
         run: |
           export production=test
           export DATABASE_URL="postgresql://test:test@localhost:5432"
-          export app.secret_key = getenv("SECRET_KEY")  # Add this line
           poetry run coverage run --branch -m pytest
 
       - name: Coverage XML
