@@ -62,14 +62,13 @@ open a new terminal and get database connection:
 open a new terminal and create a new database for test:
 > psql
 > CREATE DATABASE test;
+> 
 > \c test
 
 Copy all the commands in schema.sql and use them.
 
-Go to app.py and comment the first if if getenv("production") == "test": out, now take the comment off from the the second if getenv("production") == "test":.
-
 Now run the tests in src-folder:
-> production=test pytest 
+> production=local_test pytest 
 
 ### Acceptance criteria using Robot Framework:
 Start the virtual environment and shell:
