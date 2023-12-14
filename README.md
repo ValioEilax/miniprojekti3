@@ -29,7 +29,7 @@ Install project dependencies with Poetry:
 Define database tables from schema.sql in "src"-folder:
 > psql (database_name) < schema.sql
 
-## Running the project:
+## Running the project locally:
 
 Start the virtual environment and shell:
 > poetry shell
@@ -38,7 +38,7 @@ Go to "src"-folder:
 > cd src
 
 Run the Flask application:
-> flask run
+> production=local flask run
 
 Open the flask-webpage with your browser (Usual URL is http://127.0.0.1:5000).
 
@@ -70,7 +70,7 @@ Define database tables from schema.sql in "src"-folder:
 > psql test < schema.sql
 
 Now run the tests in src-folder:
-> production=local_test pytest 
+> production=local_test pytest
 
 ### Acceptance criteria using Robot Framework:
 Start the virtual environment and shell:
@@ -79,11 +79,11 @@ Start the virtual environment and shell:
 open a new terminal and get database connection:
 > start-pg.sh
 
-Run the Flask application in a new terminal:
-> flask run
+Run the Flask application in the "src"-folder in a new terminal:
+> production=local_test flask run
 
-Run robot tests:
-> robot src/tests
+Run robot tests in the "src"-folder in another terminal:
+> robot tests/
 
 
 ## Documentation
