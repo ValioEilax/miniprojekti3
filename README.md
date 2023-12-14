@@ -13,7 +13,7 @@ Here is a link to our app:
 
 Get the source code, clone the project.
 
-The project uses PostgreSQL. It can be installed from /src/documents/resources/local-pg-master-folder.
+The project uses PostgreSQL. It can be installed from documents/resources/local-pg-master-folder.
 It contains using the script "pg-install.sh" and instructions in its own "README.md".
 
 The ".env"-file should NOT be added to git.
@@ -49,23 +49,24 @@ Shell can be exited with a command:
 > exit
 
 ## Running tests locally:
-### Unitetest:
+### Unittest:
 Start the virtual environment and shell:
 > poetry shell
 
 Go to "src"-folder:
 > cd src
 
-open a new terminal and get database connection:
+Open a new terminal and get database connection:
 > start-pg.sh
 
-open a new terminal and create a new database for test:
+Open a new terminal and create a new database for test:
 > psql
 > CREATE DATABASE test;
 > 
 > \c test
 
-Copy all the commands in schema.sql and use them.
+Define database tables from schema.sql in "src"-folder:
+> psql test < schema.sql
 
 Now run the tests in src-folder:
 > production=local_test pytest 
@@ -86,7 +87,7 @@ Run robot tests:
 
 ## Documentation
 - [Työaikakirjanpito & Sprint Backlog](https://docs.google.com/spreadsheets/d/1tvDweyWHiYNj0rdVt22RT_IMBiqbW4Og1WdRkrPofMc/edit?usp=sharing)
-- [Definition of Done](https://github.com/ValioEilax/miniprojekti3/blob/main/src/documents/dod.md)
+- [Definition of Done](https://github.com/ValioEilax/miniprojekti3/blob/main/documents/dod.md)
 - [Product Backlog](https://github.com/users/ValioEilax/projects/1/views/1?layout=table)
-- [Retro](https://github.com/ValioEilax/miniprojekti3/blob/main/src/documents/retro.md)
+- [Retro](https://github.com/ValioEilax/miniprojekti3/blob/main/documents/retro.md)
 
