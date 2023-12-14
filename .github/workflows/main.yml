@@ -38,7 +38,7 @@ jobs:
           psql -h localhost -U test -d test -a -f src/schema.sql
 
       - name: Set Flask secret key
-        run: echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> $GITHUB_ENV
+        run: echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> $.env_template
         
       - name: Run tests with production environment variable
         run: |
