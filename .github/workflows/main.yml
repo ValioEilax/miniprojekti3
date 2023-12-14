@@ -61,7 +61,6 @@ jobs:
       - name: Run robot tests
         run: bash run_robot_tests.sh
         env:
-          PGPASSWORD: test
           DATABASE_URL: postgresql://test:test@localhost:5432
-          FLASK_ENV: production
-         
+          FLASK_ENV: development
+          PGPASSWORD: test
