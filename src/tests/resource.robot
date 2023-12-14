@@ -12,11 +12,7 @@ ${REFERENCE_URL}  http://${SERVER}/reference
 
 
 *** Keywords ***
-# Open Application
-#     Open Browser    ${HOME_URL}    ${BROWSER}
-#     Maximize Browser Window
 
-# Close Application
 Close Application
     Close Browser
 
