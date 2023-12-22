@@ -91,4 +91,4 @@ Run robot tests in the "src"-folder in another terminal:
 - [Definition of Done](https://github.com/ValioEilax/miniprojekti3/blob/main/documents/dod.md)
 - [Product Backlog](https://github.com/users/ValioEilax/projects/1/views/1?layout=table)
 - [Retro](https://github.com/ValioEilax/miniprojekti3/blob/main/documents/retro.md)
-- [Report](https://helsinkifi-my.sharepoint.com/:w:/g/personal/kxelina_ad_helsinki_fi/EUo6Yiefx7pGhw8Eswsik2UBmXtiV6FhJ3yB2O75nC4a4w?e=cAaJJV)
+- [Report](documents/Miniprojektin loppuraportti.pdf)
